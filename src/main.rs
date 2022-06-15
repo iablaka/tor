@@ -1,5 +1,6 @@
 use std::env;
 use std::process;
+use std::fs;
 
 mod init;
 
@@ -18,6 +19,28 @@ fn print_usage() {
     println!("{}", usage);
 }
 
+fn list_providers(dir: &str) -> Vec<String> {
+    let mut providers_lines: Vec<String> = Vec::new();
+    let paths = fs::read_dir(&dir).unwrap();
+    for path in paths {
+        let path = path.unwrap().path();
+        let md = fs::metadata(&path);
+        if md.unwrap().file_type().is_file() {
+            let contents = fs::read_to_string(&path).expect("Something went wrong reading file");
+            // let lines: Vec<&str> = contents.split("\n").collect();
+            // println!("{:?}", lines.len());
+            for line in contents.split("\n") {
+                if line.len() > 9 {
+                    match &line[..9] {
+                        "provider " => providers_lines.push(String::from(line.trim())),
+                        _ => (),
+                    }
+                }
+            }
+        }
+    }
+    providers_lines
+}
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -44,4 +67,5 @@ fn main() {
     else {
         print_usage();
     }
+    println!("{:?}", list_providers(&args[3]))
 }
