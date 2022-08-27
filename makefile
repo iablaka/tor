@@ -1,2 +1,2 @@
-build: tor.c init.c
-	cc -o ./bin/tor tor.c init.c -Wall
+build: src/*.c
+	cc -o ./bin/tor src/tor.c src/init.c -Wall
