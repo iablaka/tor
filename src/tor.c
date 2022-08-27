@@ -1,17 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "init.h"
 
 void usage() {
-    printf("Usage: tor [init|apply|destroy] <src_dir>\n");
-    exit(1);
+    printf("Usage: tor init|plan|apply|destroy [project_dir]\n");
+    printf("       project_dir is the directory where your tor configuration is\n");
+    printf("       If omitted, default project_dir is .\n");
+    exit(EXIT_FAILURE);
 }
 
 int main(int argc, char* argv[]) {
-    if (argc !=3) {
+    char* proj_dir = ".";
+    char* cmd = "";
+    
+    if (argc < 2 || argc > 3) {
         usage();
     }
-    //printf("args = %s, %s\n", argv[1], argv[2]);
-    mkdir_tor(argv[2]);
-    return 0;
+    cmd = argv[1];
+    if (argc == 3) { //project_dir was given
+        proj_dir = argv[2];
+    }
+    if (strcmp(cmd,"init") == 0) {
+        mkdir_tor(proj_dir);
+        return EXIT_SUCCESS;
+    }
+    else if (strcmp(cmd,"plan") == 0 || strcmp(cmd,"apply") == 0|| strcmp(cmd,"destroy") == 0) {
+        printf("Not implemented yet\n");
+        return EXIT_SUCCESS;
+    }
+    else {
+        usage();
+    }
 }
