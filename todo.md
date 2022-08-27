@@ -28,8 +28,10 @@ As a user, when I use the init command, the system parses the config files in my
 
 ## Actions
 
-US 0 to 4 are completed. Moving to 5.
+- US 0 to 4 are completed. Moving to 5.
+- Find out how to test all this before it becomes too big.
+- Doc is to be improved.
+- Create lib folder with fs_utils, str_utils in it
+- Rewrite init.c to get rid of ftw calls and use fts instead
 
-Find out how to test all this before it becomes too big.
 
-Doc is to be improved.

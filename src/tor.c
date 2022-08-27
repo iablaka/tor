@@ -22,8 +22,11 @@ int main(int argc, char* argv[]) {
         proj_dir = argv[2];
     }
     if (strcmp(cmd,"init") == 0) {
-        mkdir_tor(proj_dir);
+        if (init_tor(proj_dir) != 0) {
+            return EXIT_FAILURE;
+        }
         return EXIT_SUCCESS;
+        
     }
     else if (strcmp(cmd,"plan") == 0 || strcmp(cmd,"apply") == 0|| strcmp(cmd,"destroy") == 0) {
         printf("Not implemented yet\n");
