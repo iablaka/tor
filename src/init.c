@@ -20,7 +20,7 @@ int rmdir(char *path)
         return nftw(path, unlink_cb, 64, FTW_DEPTH | FTW_PHYS);
 }
 
-int mkdir_tor(char* path)
+int mkdir_tor(char *path)
 {
         struct stat sb;
         //if path is a dir and is accessible
@@ -54,21 +54,22 @@ int mkdir_tor(char* path)
         return EXIT_SUCCESS;
 }
 
-int list_providers(path, providers)
-{
-        //returns -1 in case of an error or the number of providers
-        return 0;
+// int list_providers(char *path, providers)
+// {
+//         //returns -1 in case of an error or the number of providers
+//         return 0;
 
-}
+// }
 
-int init_tor(char* path)
+int init_tor(char *path)
 {
-        char *providers[16]; //There cannot more than 16 providers in a project so far!
+        //char *providers[16]; //There cannot more than 16 providers in a project so far!
 
         if (mkdir_tor(path) != 0) {
                 return EXIT_FAILURE;
         }
-        if (list_providers(path, *providers) < 0) {
-                return EXIT_FAILURE;
-        }
+        // if (list_providers(path, *providers) < 0) {
+        //         return EXIT_FAILURE;
+        // }
+        return EXIT_SUCCESS;
 }

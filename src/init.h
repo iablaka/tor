@@ -1,1 +1,1 @@
-int init_tor(char* path);
+int init_tor(char *path);

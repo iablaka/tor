@@ -11,7 +11,7 @@ void usage()
         exit(EXIT_FAILURE);
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
         char* proj_dir = ".";
         char* cmd = "";
