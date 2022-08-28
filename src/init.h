@@ -1,1 +1,1 @@
-void mkdir_tor(char* dir);
+int init_tor(char *path);
