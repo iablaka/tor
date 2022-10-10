@@ -33,5 +33,3 @@ As a user, when I use the init command, the system parses the config files in my
 - Doc is to be improved.
 - Create lib folder with fs_utils, str_utils in it
 - Rewrite init.c to get rid of ftw calls and use fts instead
-
-
